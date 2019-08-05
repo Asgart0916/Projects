@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>訂購飲料2</title>
+    <script src="projs3.js"></script>
+    <script type="text/javascript">
+
+      function myFunction() {
+
+        var obj= {"Name":"","TEL":"","Address":"","Size":"","Sweetness":""}
+
+            obj.Name =   document.getElementById("name").value;
+            obj.TEL  =   document.getElementById("tel").value;
+            obj.Address  =   document.getElementById("addr").value;
+
+            if (document.getElementById("size1").checked) { obj.Size = document.getElementById("size1").value; }
+            if (document.getElementById("size2").checked) { obj.Size = document.getElementById("size2").value; }
+
+            if (document.getElementById("sw1").checked) { obj.Sweetness = document.getElementById("sw1").value; }
+            if (document.getElementById("sw2").checked) { obj.Sweetness = document.getElementById("sw2").value; }
+            if (document.getElementById("sw3").checked) { obj.Sweetness = document.getElementById("sw3").value; }
+
+            var myJSONstr = JSON.stringify(obj);
+            alert(myJSONstr);
+            HTTPPostData("Post.aspx?id=drinkOrder", myJSONstr);
+        }
+    </script>
+    </head>
+  <body>
+
+    <h1>Order Here</h1>
+
+    <br>姓名:<input type="text"  id ="name" size="18"><br>
+    <br>電話:<input type="text"  id="tel" size="20"><br>
+    <br>地址:<input type="text"  id="addr" size="20"><br>
+
+    <p>
+      SIZE:
+      <input type="radio" id="size1" name="size" value="Medium" checked="">Medium
+      <input type="radio" id="size2" name="size" value="Large">Large +$20
+    </p>
+    <p>
+      Sweetness level:
+      <input type="radio" id = "sw1" name="sweetnesslevel" value="Regular sugar"checked="">Regular sugar
+      <input type="radio" id = "sw2" name="sweetnesslevel" value="Half sugar">Half sugar
+      <input type="radio" id = "sw3" name="sweetnesslevel" value="Sugar-free">Sugar-free
+    </p>
+
+    <p> <button onclick="myFunction()">saveDrinkData</button></p>
+  </body>
+</html>
